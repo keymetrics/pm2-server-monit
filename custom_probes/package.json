@@ -1,0 +1,21 @@
+{
+  "name": "rdb",
+  "version": "0.2.19",
+  "description": "keymetrics I/O adapter",
+  "main": "index.js",
+  "dependencies" : {
+    "rethinkdb" : "*",
+    "axm" : "*"
+  },
+  "devDependencies" : {
+  },
+  "scripts" : {
+    "test" : "DEBUG='axm:*' mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keymetrics/axm.git"
+  },
+  "author": "Keymetrics I/O",
+  "license": "ISC"
+}
