@@ -1,6 +1,6 @@
 ## Description
 
-PM2 module to automatically monitoring vital sign of your server :
+PM2 module to automatically monitoring vital signs of your server :
 
 * CPU average usage
 * Free and used drive space
