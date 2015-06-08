@@ -1,6 +1,6 @@
 ## Description
 
-PM2 module to automatically catch probes from the server :
+PM2 module to automatically monitoring vital sign of your server :
 
 * CPU average usage
 * Free and used drive space
