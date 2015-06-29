@@ -1,11 +1,14 @@
 {
   "name": "pm2-server-monit",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
-    "pmx": "latest",
+    "path": "*",
+    "fs": "*",
+    "pm2": "*",
+    "pmx": "*",
     "shelljs": "*",
     "cpu-stats": "*"
   },
