@@ -20,13 +20,13 @@ var conf = pmx.initModule({
 
   widget : {
     type             : 'generic',
-    logo             : 'http://mingersoft.com/blog/wp-content/uploads/2012/02/Home-Server-Logo.png',
+    logo             : 'http://serverental.com/server-rental/wp-content/uploads/2013/12/DellPowerEdger510Server2U2-socketrackserver.png',
 
     // 0 = main element
     // 1 = secondary
     // 2 = main border
     // 3 = secondary border
-    theme            : ['#568FFF', '#70A0FF', 'white', 'white'],
+    theme            : ['#111111', '#1B2228', '#807C7C', '#807C7C'],
 
     el : {
       probes  : true,
@@ -34,12 +34,12 @@ var conf = pmx.initModule({
     },
 
     block : {
-      actions : true,
+      actions : false,
       issues  : true,
-      meta : false,
+      meta : true,
       cpu: false,
       mem: false,
-      main_probes : ['CPU usage', 'Free space', 'Free memory', 'All processes', 'Users Connected', 'eth0 input', 'eth0 output']
+      main_probes : ['CPU usage', 'Free memory', 'Avail. Disk', 'Total Processes', 'TTY/SSH opened', 'eth0 input', 'eth0 output', 'Operating System']
     }
 
     // Status

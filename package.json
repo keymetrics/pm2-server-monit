@@ -1,14 +1,13 @@
 {
   "name": "pm2-server-monit",
   "version": "0.1.5",
+  "description": "Rack to monitor a server",
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
-    "path": "*",
-    "fs": "*",
-    "pm2": "*",
-    "pmx": "*",
+    "pm2": "latest",
+    "pmx": "latest",
     "shelljs": "*",
     "cpu-stats": "*"
   },
