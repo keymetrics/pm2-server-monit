@@ -2,6 +2,7 @@
 var cpu = require('./lib/cpu'),
     os = require('./lib/os'),
     drive = require('./lib/drive'),
+    users = require('./lib/users'),
     pmx = require('pmx'),
     pm2 = require('pm2'),
     fs      = require('fs'),
@@ -38,7 +39,7 @@ var conf = pmx.initModule({
       meta : false,
       cpu: false,
       mem: false,
-      main_probes : ['CPU usage', 'Free space', 'Free memory', 'All processes', 'eth0 input', 'eth0 output']
+      main_probes : ['CPU usage', 'Free space', 'Free memory', 'All processes', 'Users Connected', 'eth0 input', 'eth0 output']
     }
 
     // Status
