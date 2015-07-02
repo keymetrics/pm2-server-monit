@@ -48,12 +48,32 @@ var conf = pmx.initModule({
   }
 });
 
-pmx.action('vmstats', function(reply) {
-  var vmstats = shelljs.exec('vmstat -S m', { async : true, silent:true}, function(err, out) {
-    var result = out.replace(/\n/g, "<br />");
-    return reply(result);
+
+if (process.platform == 'linux') {
+  pmx.action('top cpu consuming', function(reply) {
+    var top_cpu_process = shelljs.exec('ps -eo pcpu,user,args --no-headers | sort -k 1 -nr | head -n 10 | cut -c 1-70', { async : true, silent:true}, function(err, out) {
+      var result = out.replace(/\n/g, "<br />");
+      return reply(result);
+    });
   });
-});
+
+
+  pmx.action('top mem consuming', function(reply) {
+    var top_mem_process = shelljs.exec('ps -eo pmem,pid,cmd | sort -k 1 -nr | head -10 | cut -c 1-70', { async : true, silent:true}, function(err, out) {
+      var result = out.replace(/\n/g, "<br />");
+      return reply(result);
+    });
+  });
+
+
+  pmx.action('vmstats', function(reply) {
+    var vmstats = shelljs.exec('vmstat -S m', { async : true, silent:true}, function(err, out) {
+      var result = out.replace(/\n/g, "<br />");
+      return reply(result);
+    });
+  });
+}
+
 
 pmx.action('processes/users', function(reply) {
   var proc_users = shelljs.exec('ps hax -o user | sort | uniq -c', { async : true, silent:true}, function(err, out) {
@@ -78,20 +98,6 @@ pmx.action('who', function(reply) {
 
 pmx.action('uptime', function(reply) {
   var uptime = shelljs.exec('uptime', { async : true, silent:true}, function(err, out) {
-    var result = out.replace(/\n/g, "<br />");
-    return reply(result);
-  });
-});
-
-pmx.action('top cpu consuming', function(reply) {
-  var top_cpu_process = shelljs.exec('ps -eo pcpu,user,args --no-headers | sort -k 1 -nr | head -n 10 | cut -c 1-70', { async : true, silent:true}, function(err, out) {
-    var result = out.replace(/\n/g, "<br />");
-    return reply(result);
-  });
-});
-
-pmx.action('top mem consuming', function(reply) {
-  var top_mem_process = shelljs.exec('ps -eo pmem,pid,cmd | sort -k 1 -nr | head -10 | cut -c 1-70', { async : true, silent:true}, function(err, out) {
     var result = out.replace(/\n/g, "<br />");
     return reply(result);
   });
