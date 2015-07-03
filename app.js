@@ -51,7 +51,7 @@ var conf = pmx.initModule({
 
 if (process.platform == 'linux') {
   pmx.action('top cpu consuming', function(reply) {
-    var top_cpu_process = shelljs.exec('ps -eo pcpu,user,args --no-headers | sort -k 1 -nr | head -n 10 | cut -c 1-70', { async : true, silent:true}, function(err, out) {
+    var top_cpu_process = shelljs.exec('ps -eo pcpu,user,args --no-headers | sort -k 1 -n | tail -n 10 | sort -k 1 -nr | cut -c 1-70', { async : true, silent:true}, function(err, out) {
       var result = out.replace(/\n/g, "<br />");
       return reply(result);
     });
@@ -59,7 +59,7 @@ if (process.platform == 'linux') {
 
 
   pmx.action('top mem consuming', function(reply) {
-    var top_mem_process = shelljs.exec('ps -eo pmem,pid,cmd | sort -k 1 -nr | head -10 | cut -c 1-70', { async : true, silent:true}, function(err, out) {
+    var top_mem_process = shelljs.exec('ps -eo pmem,pid,cmd | sort -k 1 -n | tail -n 10 | sort -k 1 -nr | cut -c 1-70', { async : true, silent:true}, function(err, out) {
       var result = out.replace(/\n/g, "<br />");
       return reply(result);
     });
