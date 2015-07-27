@@ -13,6 +13,7 @@
   },
   "apps": [
     {
+      "name" : "pm2-server-monit",
       "script": "app.js"
     }
   ]
