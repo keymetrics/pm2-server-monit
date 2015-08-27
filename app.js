@@ -21,7 +21,7 @@ var conf = pmx.initModule({
 
   widget : {
     type             : 'generic',
-    logo             : 'http://serverental.com/server-rental/wp-content/uploads/2013/12/DellPowerEdger510Server2U2-socketrackserver.png',
+    logo             : 'https://www.glcomp.com/media/catalog/category/Dell-R620_3_1_1.png',
 
     // 0 = main element
     // 1 = secondary
