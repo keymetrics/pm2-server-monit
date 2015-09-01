@@ -6,7 +6,6 @@
     "start": "node app"
   },
   "dependencies": {
-    "pm2": "latest",
     "pmx": "latest",
     "shelljs": "*",
     "cpu-stats": "*"
