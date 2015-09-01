@@ -1,6 +1,6 @@
 {
   "name": "pm2-server-monit",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Rack to monitor a server",
   "scripts": {
     "start": "node app"
