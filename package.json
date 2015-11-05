@@ -1,6 +1,6 @@
 {
   "name": "pm2-server-monit",
-  "version": "0.13.0",
+  "version": "1.0.0",
   "description": "Rack to monitor a server",
   "scripts": {
     "start": "node app"
@@ -13,7 +13,8 @@
   "apps": [
     {
       "name": "pm2-server-monit",
-      "script": "app.js"
+      "script": "app.js",
+      "max_memory_restart" : "150M"
     }
   ]
 }
