@@ -16,5 +16,8 @@
       "script": "app.js",
       "max_memory_restart": "150M"
     }
-  ]
+  ],
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
 }
