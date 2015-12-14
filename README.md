@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img width=710px src="https://github.com/pm2-hive/pm2-server-monit/raw/master/server-monig.png">
+    <img width=710px src="https://github.com/pm2-hive/pm2-server-monit/raw/master/server-monit.png">
 </div>
 
 ## Description
