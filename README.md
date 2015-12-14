@@ -1,3 +1,8 @@
+
+<div align="center">
+    <img width=710px src="https://github.com/pm2-hive/pm2-server-monit/raw/master/server-monig.png">
+</div>
+
 ## Description
 
 PM2 module to automatically monitor vital signs of your server :
