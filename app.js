@@ -2,6 +2,7 @@ var pmx     = require('pmx');
 var cpu     = require('./lib/cpu.js');
 var drive   = require('./lib/drive.js');
 var mem     = require('./lib/mem.js');
+var os      = require('./lib/os');
 
 pmx.initModule({
   widget : {
@@ -34,18 +35,19 @@ pmx.initModule({
 }, function(err, conf) {
 
   cpu.init(conf);
+  os.init(conf);
   drive.init(conf);
-  mem.init(conf);
-  var    os = require('./lib/os'),
-      users = require('./lib/users'),
+  var    users = require('./lib/users'),
       shelljs = require('shelljs'),
       fs      = require('fs'),
       path    = require('path');
 
-  if (process.platform == 'linux')
-    var netstat = require('./lib/netstat'),
+  if (process.platform == 'linux') {
+      mem.init(conf);
+      var netstat = require('./lib/netstat'),
         //mem = require('./lib/mem'),
         proc = require('./lib/proc');
+  }
 
   require('./lib/actions.js');
 });
