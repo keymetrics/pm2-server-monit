@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/pm2-hive/pm2-server-monit"
   },
+  "config": {
+    "drive": "/",
+    "network": ""
+  },
   "scripts": {
     "start": "node app"
   },

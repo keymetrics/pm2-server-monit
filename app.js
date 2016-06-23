@@ -1,7 +1,9 @@
+var pmx     = require('pmx');
+var cpu     = require('./lib/cpu.js');
+var drive   = require('./lib/drive.js');
+var mem     = require('./lib/mem.js');
 
-var pmx = require('pmx');
-
-var conf = pmx.initModule({
+pmx.initModule({
   widget : {
     type             : 'generic',
     logo             : 'https://www.glcomp.com/media/catalog/category/Dell-R620_3_1_1.png',
@@ -29,11 +31,12 @@ var conf = pmx.initModule({
     // Status
     // Green / Yellow / Red
   }
-}, function() {
+}, function(err, conf) {
 
-  var cpu = require('./lib/cpu'),
-      os = require('./lib/os'),
-      drive = require('./lib/drive'),
+  cpu.init(conf);
+  drive.init(conf);
+  mem.init(conf);
+  var    os = require('./lib/os'),
       users = require('./lib/users'),
       shelljs = require('shelljs'),
       fs      = require('fs'),
@@ -41,7 +44,7 @@ var conf = pmx.initModule({
 
   if (process.platform == 'linux')
     var netstat = require('./lib/netstat'),
-        mem = require('./lib/mem'),
+        //mem = require('./lib/mem'),
         proc = require('./lib/proc');
 
   require('./lib/actions.js');
