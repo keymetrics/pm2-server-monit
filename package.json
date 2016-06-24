@@ -7,8 +7,7 @@
     "url": "https://github.com/pm2-hive/pm2-server-monit"
   },
   "config": {
-    "drive": "/",
-    "network": ""
+    "drive": "/"
   },
   "scripts": {
     "start": "node app"

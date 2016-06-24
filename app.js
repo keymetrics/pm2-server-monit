@@ -1,8 +1,17 @@
 var pmx     = require('pmx');
+var shelljs = require('shelljs');
+var fs      = require('fs');
+var path    = require('path');
 var cpu     = require('./lib/cpu.js');
 var drive   = require('./lib/drive.js');
 var mem     = require('./lib/mem.js');
-var os      = require('./lib/os');
+var os      = require('./lib/os.js');
+var users   = require('./lib/users.js');
+var netstat = require('./lib/netstat.js');
+var proc    = require('./lib/proc');
+var actions = require('./lib/actions.js');
+
+
 
 pmx.initModule({
   widget : {
@@ -26,7 +35,7 @@ pmx.initModule({
       meta : true,
       cpu: false,
       mem: false,
-      main_probes : ['CPU usage', 'Free memory', 'Avail. Disk', 'Total Processes', 'TTY/SSH opened', 'eth0 input', 'eth0 output', 'Operating System']
+      main_probes : ['CPU usage', 'Free memory', 'Avail. Disk', 'Total Processes', 'TTY/SSH opened', 'network in', 'network out', 'Operating System']
     }
 
     // Status
@@ -34,20 +43,16 @@ pmx.initModule({
   }
 }, function(err, conf) {
 
-  cpu.init(conf);
-  os.init(conf);
+  cpu.init();
+  os.init();
   drive.init(conf);
-  var    users = require('./lib/users'),
-      shelljs = require('shelljs'),
-      fs      = require('fs'),
-      path    = require('path');
+  users.init();
 
   if (process.platform == 'linux') {
-      mem.init(conf);
-      var netstat = require('./lib/netstat'),
-        //mem = require('./lib/mem'),
-        proc = require('./lib/proc');
+      mem.init();
+      netstat.init();
+      proc.init();
   }
 
-  require('./lib/actions.js');
+  actions.initActions();
 });
