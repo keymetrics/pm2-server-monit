@@ -1,6 +1,6 @@
 {
   "name": "pm2-server-monit",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Rack to monitor a server",
   "repository": {
     "type": "git",
