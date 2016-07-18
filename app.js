@@ -10,8 +10,7 @@ var users   = require('./lib/users.js');
 var netstat = require('./lib/netstat.js');
 var proc    = require('./lib/proc');
 var actions = require('./lib/actions.js');
-
-
+var lsof    = require('./lib/lsof.js');
 
 pmx.initModule({
   widget : {
@@ -47,6 +46,7 @@ pmx.initModule({
   os.init();
   drive.init(conf);
   users.init();
+  lsof.init();
 
   if (process.platform == 'linux') {
       mem.init();
