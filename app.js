@@ -10,7 +10,7 @@ var users   = require('./lib/users.js');
 var netstat = require('./lib/netstat.js');
 var proc    = require('./lib/proc');
 var actions = require('./lib/actions.js');
-var lsof    = require('./lib/lsof.js');
+var lsof    = require('./lib/openfiles.js');
 
 pmx.initModule({
   widget : {
