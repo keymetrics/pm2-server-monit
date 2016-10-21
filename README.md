@@ -16,10 +16,6 @@ PM2 module to automatically monitor vital signs of your server :
 * Total opened files
 * Network speed (input and output)
 
-##Requirements
-
-This pm2 module currently uses `ifconfig` to get network status on linux machines, usually installed by default. If not, install with `sudo apt-get install net-tools`.
-
 # pm2-server-monit
 
 ## Install
