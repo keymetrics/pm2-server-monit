@@ -15,8 +15,7 @@
   },
   "dependencies": {
     "pmx": "latest",
-    "shelljs": "*",
-    "cpu-stats": "*"
+    "shelljs": "*"
   },
   "apps": [
     {
