@@ -42,7 +42,7 @@ pmx.initModule({
   }
 }, function(err, conf) {
 
-  cpu.init();
+  cpu.init(conf);
   os.init();
   drive.init(conf);
   users.init();
@@ -50,7 +50,7 @@ pmx.initModule({
 
   if (process.platform == 'linux') {
       mem.init();
-      netstat.init();
+      netstat.init(conf);
       proc.init();
   }
 

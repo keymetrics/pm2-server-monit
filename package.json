@@ -1,13 +1,14 @@
 {
   "name": "pm2-server-monit",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Rack to monitor a server",
   "repository": {
     "type": "git",
     "url": "https://github.com/pm2-hive/pm2-server-monit"
   },
   "config": {
-    "drive": "/"
+    "drive": "/",
+    "small_interval": "1"
   },
   "scripts": {
     "start": "node app"
