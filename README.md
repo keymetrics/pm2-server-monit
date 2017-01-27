@@ -42,6 +42,10 @@ pm2 set pm2-server-monit:small_interval 10
 
 :warning: If this module uses too much CPU, set the `small_interval` value to 10 or more.
 
+## Info
+
+If you have ❌ in some categories, your OS configuration is not supported for this option.
+
 ## Uninstall
 
 ```bash
