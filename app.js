@@ -46,7 +46,7 @@ pmx.initModule({
   os.init();
   drive.init(conf);
   users.init();
-  lsof.init();
+  lsof.init(conf);
   mem.init();
   netstat.init(conf);
 
