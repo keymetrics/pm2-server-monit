@@ -49,10 +49,7 @@ pmx.initModule({
   lsof.init(conf);
   mem.init(conf);
   netstat.init(conf);
-
-  if (process.platform == 'linux') {
-      proc.init(conf);
-  }
+  proc.init(conf);
 
   actions.initActions();
 });
