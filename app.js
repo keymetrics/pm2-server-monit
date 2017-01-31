@@ -51,7 +51,7 @@ pmx.initModule({
   netstat.init(conf);
 
   if (process.platform == 'linux') {
-      proc.init();
+      proc.init(conf);
   }
 
   actions.initActions();
