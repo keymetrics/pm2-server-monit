@@ -47,7 +47,7 @@ pmx.initModule({
   drive.init(conf);
   users.init();
   lsof.init(conf);
-  mem.init();
+  mem.init(conf);
   netstat.init(conf);
 
   if (process.platform == 'linux') {
