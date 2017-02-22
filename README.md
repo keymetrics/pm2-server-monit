@@ -52,6 +52,12 @@ If you have ❌ in some categories, your OS configuration is not supported for t
 $ pm2 uninstall pm2-server-monit
 ```
 
+## Update
+
+```bash
+$ pm2 update pm2-server-monit
+```
+
 # License
 
 MIT
