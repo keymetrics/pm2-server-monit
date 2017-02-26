@@ -52,10 +52,10 @@ If you have ❌ in some categories, your OS configuration is not supported for t
 $ pm2 uninstall pm2-server-monit
 ```
 
-## Update
+## Update to latest version
 
 ```bash
-$ pm2 modul2:update pm2-server-monit
+$ pm2 module:update pm2-server-monit
 ```
 
 # License
