@@ -1,5 +1,4 @@
 var pmx     = require('pmx');
-var shelljs = require('shelljs');
 var fs      = require('fs');
 var path    = require('path');
 var cpu     = require('./lib/cpu.js');
@@ -45,7 +44,7 @@ pmx.initModule({
   cpu.init(conf);
   os.init();
   drive.init(conf);
-  users.init();
+  users.init(conf);
   lsof.init(conf);
   mem.init(conf);
   netstat.init(conf);
