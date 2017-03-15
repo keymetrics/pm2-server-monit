@@ -14,8 +14,7 @@
     "start": "node app"
   },
   "dependencies": {
-    "pmx": "latest",
-    "shelljs": "*"
+    "pmx": "latest"
   },
   "apps": [
     {
