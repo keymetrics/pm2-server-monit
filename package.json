@@ -11,7 +11,8 @@
     "small_interval": "1"
   },
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+    "test": "./node_modules/.bin/mocha test"
   },
   "dependencies": {
     "pmx": "latest"
