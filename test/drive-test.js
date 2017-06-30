@@ -6,6 +6,10 @@ var bupNotify = pmx.notify;
 var childProcess = require('child_process');
 var bupExec = childProcess.exec;
 
+var config = {
+  small_interval: 60
+}
+
 describe('drive', function() {
   after(function() {
     childProcess.exec = bupExec;
@@ -31,40 +35,23 @@ tmpfs                  6096496        0   6096496   0% /dev/shm\n\
     var opts = [];
     pmx.probe = function() {
       return {
-        metric: function(opt) {
-          opts.push(opt);
-          if (opts.length === 1) {
-            assert.equal(opt.value(), "26.9%", "Available");
-          } else if (opts.length === 2) {
-            assert.equal(opt.value(), "23.7GB / 34.9GB", "Size");
-            return done();
+        metric: function() {
+          return {
+            set: function(opt) {
+              opts.push(opt);
+              if (opts.length === 1) {
+                assert.equal(opt, "26.9%", "Available");
+              } else if (opts.length == 2) {
+                assert.equal(opt, "23.7GB / 34.9GB", "Size");
+                return done();
+              }
+            }
           }
-        }
+        },
       };
     };
 
-    require('../lib/drive');
-  });
-
-  it('notifies when disk is almost full', function(done) {
-    childProcess.exec = function(cmd, opt, callback) {
-      //jshint multistr:true
-      var stdout = "\
-Filesystem           1K-blocks     Used Available Use% Mounted on\n\
-/dev                  36580952 33288666   3292286  91% /\n\
-tmpfs                  6096496        0   6096496   0% /dev/shm\n\
-/dev/boot               487652   151545    310507  33% /boot\n\
-";
-      callback(null, stdout);
-    };
-
-    var opts = [];
-    pmx.notify = function(err) {
-      assert.equal(err.message, "/dev Disk almost full", "Notification");
-      return done();
-    };
-
-    require('../lib/drive');
+    require('../lib/drive').init(config);
   });
 
   it('returns disk size when Filesystem splits line', function(done) {
@@ -84,40 +71,22 @@ tmpfs                  6096496        0   6096496   0% /dev/shm\n\
     pmx.probe = function() {
       return {
         metric: function(opt) {
-          opts.push(opt);
-          if (opts.length === 1) {
-            assert.equal(opt.value(), "26.9%", "Available");
-          } else if (opts.length === 2) {
-            assert.equal(opt.value(), "23.7GB / 34.9GB", "Size");
-            return done();
+          return {
+            set: function(opt) {
+              opts.push(opt);
+              if (opts.length === 1) {
+                assert.equal(opt, "26.9%", "Available");
+              } else if (opts.length == 2) {
+                assert.equal(opt, "23.7GB / 34.9GB", "Size");
+                return done();
+              }
+            }
           }
         }
       };
     };
 
-    require('../lib/drive');
-  });
-
-  it('notifies when long disk is almost full', function(done) {
-    childProcess.exec = function(cmd, opt, callback) {
-      //jshint multistr:true
-      var stdout = "\
-Filesystem           1K-blocks     Used Available Use% Mounted on\n\
-/share/dev/ssd-superdrive\n\
-                      36580952 33288666   3292286  91% /\n\
-tmpfs                  6096496        0   6096496   0% /dev/shm\n\
-/dev/boot               487652   151545    310507  33% /boot\n\
-";
-      callback(null, stdout);
-    };
-
-    var opts = [];
-    pmx.notify = function(err) {
-      assert.equal(err.message, "/share/dev/ssd-superdrive Disk almost full", "Notification");
-      return done();
-    };
-
-    require('../lib/drive');
+    require('../lib/drive').init(config);
   });
 
 });
