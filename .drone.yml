@@ -1,0 +1,14 @@
+pipeline:
+  build:
+    image: node:${NODE_VERSION}
+    commands:
+      - npm install 2> /dev/null
+      - export NODE_ENV=test
+      - npm run test
+matrix:
+  NODE_VERSION:
+    - 0.12
+    - 4
+    - 6
+    - 7
+    - 8
