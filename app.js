@@ -10,6 +10,7 @@ var netstat = require('./lib/netstat.js');
 var proc    = require('./lib/proc');
 var actions = require('./lib/actions.js');
 var lsof    = require('./lib/openfiles.js');
+var sensors = require('./lib/sensors.js');
 
 pmx.initModule({
   widget : {
@@ -49,6 +50,6 @@ pmx.initModule({
   mem.init(conf);
   netstat.init(conf);
   proc.init(conf);
-
+  sensors.init();
   actions.initActions();
 });
