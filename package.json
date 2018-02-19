@@ -15,7 +15,8 @@
     "test": "./node_modules/.bin/mocha test"
   },
   "dependencies": {
-    "pmx": "latest"
+    "pmx": "latest",
+    "systeminformation": "^3.37.2"
   },
   "apps": [
     {
