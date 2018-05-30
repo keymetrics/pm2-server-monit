@@ -8,7 +8,8 @@
   },
   "config": {
     "drive": "/",
-    "small_interval": "1"
+    "small_interval": "1",
+    "cpu_percent_usage_alert_threshold": "90"
   },
   "scripts": {
     "start": "node app",
