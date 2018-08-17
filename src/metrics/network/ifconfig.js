@@ -4,10 +4,10 @@ const exec = require('../../utils/exec')
 
 module.exports = class IfConfigNetworkMetric {
   fetch (cb) {
-    exec('ifconfig', function (err, out) {
+    exec('ifconfig', (err, out) => {
       if (err) return cb(err)
 
-      var blocks = this.breakIntoBlocks(out)
+      const blocks = this.breakIntoBlocks(out)
       const interfaces = blocks.map(this.parseSingleBlock).map(data => {
         return {
           name: data.device,

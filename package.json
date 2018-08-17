@@ -30,7 +30,7 @@
     }
   ],
   "devDependencies": {
-    "event-loop-inspector": "^1.1.0",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "mock-require": "^3.0.2"
   }
 }

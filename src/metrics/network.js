@@ -31,8 +31,10 @@ module.exports = class NetworkMetrics {
     ]
 
     // determine which implementation to run
-    const ifConfigFetch = new IfConfigNetworkMetric().fetch
-    const ipFetch = new IPNetworkMetric().fetch
+    const ifConfigInstance = new IfConfigNetworkMetric()
+    const ifConfigFetch = ifConfigInstance.fetch.bind(ifConfigInstance)
+    const ipInstance = new IPNetworkMetric()
+    const ipFetch = ipInstance.fetch.bind(ipInstance)
 
     ipFetch(err => {
       if (err) {
@@ -86,17 +88,19 @@ module.exports = class NetworkMetrics {
         return this.interfaceNames.includes(networkInterface.name)
       })
       // fake the global network in/out
-      interfaces.push({
-        name: 'global',
-        inbound: interfaces.reduce((agg, netowrkInterface) => {
-          agg += netowrkInterface.inbound
-          return agg
-        }, 0),
-        outbound: interfaces.reduce((agg, netowrkInterface) => {
-          agg += netowrkInterface.outbound
-          return agg
-        }, 0)
-      })
+      if (interfaces.length > 0) {
+        interfaces.push({
+          name: 'global',
+          inbound: interfaces.reduce((agg, netowrkInterface) => {
+            agg += netowrkInterface.inbound
+            return agg
+          }, 0),
+          outbound: interfaces.reduce((agg, netowrkInterface) => {
+            agg += netowrkInterface.outbound
+            return agg
+          }, 0)
+        })
+      }
       // compute the difference between the old one and the current one
       const values = interfaces.map(networkInterface => {
         // fetch old values if available
