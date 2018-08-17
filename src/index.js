@@ -3,6 +3,8 @@
 const io = require('@pm2/io')
 const CPUMetrics = require('./metrics/cpu.js')
 const NetworkMetrics = require('./metrics/network.js')
+const DiskMetrics = require('./metrics/disk.js')
+const MemoryMetrics = require('./metrics/memory.js')
 
 io.initModule({
   widget: {
@@ -41,4 +43,6 @@ io.initModule({
 
   const cpu = new CPUMetrics(io, conf) // eslint-disable-line
   const network = new NetworkMetrics(io, conf)  // eslint-disable-line
+  const disk = new DiskMetrics(io, conf)  // eslint-disable-line
+  const memory = new MemoryMetrics(io, conf) // eslint-disable-line
 })
