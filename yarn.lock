@@ -87,7 +87,7 @@ escape-string-regexp@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.2.tgz#4dbc2fe674e71949caf3fb2695ce7f2dc1d9a8d1"
 
-event-loop-inspector@1.1.0, event-loop-inspector@^1.1.0:
+event-loop-inspector@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/event-loop-inspector/-/event-loop-inspector-1.1.0.tgz#12631c0251bf68a3bdd681ccc1185eea273ed3bf"
 

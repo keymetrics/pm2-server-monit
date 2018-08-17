@@ -37,7 +37,8 @@ describe('network', _ => {
     const NetworkMetrics = mock.reRequire('../src/metrics/network.js')
     const io = new FakeIO()
     const network = new NetworkMetrics(io, { network_refresh_rate: 1 }) // eslint-disable-line
-    io.on('set', ({ metrics, value }) => {
+    io.on('set', (data) => {
+      const metrics = data.metrics
       if (metrics.name === 'network in') {
         return plan.ok()
       }
@@ -62,7 +63,8 @@ describe('network', _ => {
     const NetworkMetrics = mock.reRequire('../src/metrics/network.js')
     const io = new FakeIO()
     const network = new NetworkMetrics(io, { network_refresh_rate: 1 }) // eslint-disable-line
-    io.on('set', ({ metrics, value }) => {
+    io.on('set', (data) => {
+      const metrics = data.metrics
       if (metrics.name === 'network in') {
         return plan.ok()
       }
@@ -83,7 +85,7 @@ describe('network', _ => {
     const NetworkMetrics = mock.reRequire('../src/metrics/network.js')
     const io = new FakeIO()
     const network = new NetworkMetrics(io, { network_refresh_rate: 1 }) // eslint-disable-line
-    io.on('set', ({ metrics, value }) => {
+    io.on('set', (data) => {
       assert(false, 'should not set var')
     })
     setTimeout(_ => {
@@ -103,7 +105,8 @@ describe('network', _ => {
     const NetworkMetrics = mock.reRequire('../src/metrics/network.js')
     const io = new FakeIO()
     const network = new NetworkMetrics(io, { network_refresh_rate: 1 }) // eslint-disable-line
-    io.on('set', ({ metrics, value }) => {
+    io.on('set', (data) => {
+      console.log(data)
       assert(false, 'should not set var')
     })
     setTimeout(_ => {
@@ -122,7 +125,7 @@ describe('network', _ => {
     const NetworkMetrics = mock.reRequire('../src/metrics/network.js')
     const io = new FakeIO()
     const network = new NetworkMetrics(io, { network_refresh_rate: 1 }) // eslint-disable-line
-    io.on('set', ({ metrics, value }) => {
+    io.on('set', (data) => {
       assert(false, 'should not set var')
     })
     setTimeout(_ => {

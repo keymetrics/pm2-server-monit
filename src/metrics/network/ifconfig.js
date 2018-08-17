@@ -8,13 +8,17 @@ module.exports = class IfConfigNetworkMetric {
       if (err) return cb(err)
 
       const blocks = this.breakIntoBlocks(out)
-      const interfaces = blocks.map(this.parseSingleBlock).map(data => {
-        return {
-          name: data.device,
-          inbound: data.other ? data.other.rxBytes : 0,
-          outbound: data.other ? data.other.txBytes : 0
-        }
-      })
+      const interfaces = blocks
+        .map(this.parseSingleBlock)
+        .filter(data => {
+          return typeof data.device === 'string'
+        }).map(data => {
+          return {
+            name: data.device,
+            inbound: data.other ? data.other.rxBytes : 0,
+            outbound: data.other ? data.other.txBytes : 0
+          }
+        })
       return cb(null, interfaces)
     })
   }

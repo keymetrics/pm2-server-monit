@@ -85,7 +85,9 @@ module.exports = class NetworkMetrics {
       if (err) return console.error(`Error while fetching network stats`, err)
 
       interfaces = interfaces.filter(networkInterface => {
-        return this.interfaceNames.includes(networkInterface.name)
+        // when running test, we don't want to filter interfaces
+        // because nodejs and ip don't find the same interface since running in docker
+        return this.interfaceNames.indexOf(networkInterface.name) > -1 || process.env.NODE_ENV === 'test'
       })
       // fake the global network in/out
       if (interfaces.length > 0) {
