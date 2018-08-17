@@ -19,12 +19,12 @@ module.exports = class NetworkMetrics {
         name: 'global',
         inbound: io.metric({
           name: 'network in',
-          type: 'network/inbound',
+          type: 'os/network/inbound',
           unit: 'MB/s'
         }),
         outbound: io.metric({
           name: 'network out',
-          type: 'network/outbound',
+          type: 'os/network/outbound',
           unit: 'MB/s'
         })
       }
@@ -61,12 +61,12 @@ module.exports = class NetworkMetrics {
         name: networkInterface.name,
         inbound: this.io.metric({
           name: `${networkInterface.name} input`,
-          type: 'network/inbound',
+          type: 'os/network/inbound',
           unit: 'MB/s'
         }),
         outbound: this.io.metric({
           name: `${networkInterface.name} output`,
-          type: 'network/outbound',
+          type: 'os/network/outbound',
           unit: 'MB/s'
         })
       }
