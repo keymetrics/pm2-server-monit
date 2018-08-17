@@ -1,10 +1,11 @@
 pipeline:
   build:
     image: node:${NODE_VERSION}
+    environment:
+      - NODE_ENV=test
     commands:
-      - npm install 2> /dev/null
-      - export NODE_ENV=test
-      - npm run test
+      - yarn 2> /dev/null
+      - yarn test
 matrix:
   NODE_VERSION:
     - 4
