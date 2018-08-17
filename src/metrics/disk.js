@@ -6,7 +6,7 @@ module.exports = class DiskMetric {
   constructor (io, conf) {
     this.io = io
     this.conf = conf
-    this.refreshInterval = parseInt(conf.disk_refresh_rate) || 2
+    this.refreshInterval = parseInt(conf.disk_refresh_rate) || 60
     // default disk is /
     conf.disk_monitored = conf.disk_monitored || '/'
     // allow to monitor multiple disk
@@ -20,17 +20,17 @@ module.exports = class DiskMetric {
         name: diskName,
         freeSpace: io.metric({
           name: getMetricName('Avail. Disk'),
-          type: 'disk/space/free',
+          type: 'os/disk/space/free',
           unit: '%'
         }),
         usedSpace: io.metric({
           name: getMetricName('Used space'),
-          type: 'disk/space/used',
+          type: 'os/disk/space/used',
           unit: 'GB'
         }),
         totalSpace: io.metric({
           name: getMetricName('Total Disk space'),
-          type: 'disk/space/total',
+          type: 'os/disk/space/total',
           unit: 'GB'
         })
       }
@@ -52,9 +52,9 @@ module.exports = class DiskMetric {
         if (disk === null || disk === undefined) return
 
         const total = disk.available + disk.used
-        const free = ((disk.available / total) * 100).toFixed(1) // in %
-        const used = (disk.used / 1000 / 1000).toFixed(0) // in GB
-        const totalFormat = (total / 1000 / 1000).toFixed(1) // in GB
+        const free = ((disk.available / total) * 100).toFixed(2) // in %
+        const used = (disk.used / 1000 / 1000).toFixed(2) // in GB
+        const totalFormat = (total / 1000 / 1000).toFixed(2) // in GB
         store.freeSpace.set(free)
         store.usedSpace.set(used)
         store.totalSpace.set(totalFormat)

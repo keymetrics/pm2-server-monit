@@ -8,17 +8,17 @@ module.exports = class MemoryMetric {
     this.conf = conf
     this.freeMemory = io.metric({
       name: 'Free memory',
-      type: 'memory/usage/free',
+      type: 'os/memory/usage/free',
       unit: '%'
     })
     this.usedMemory = io.metric({
       name: 'Used memory',
-      type: 'memory/usage/used',
+      type: 'os/memory/usage/used',
       unit: 'GB'
     })
     this.totalMemory = io.metric({
       name: 'Total memory',
-      type: 'memory/usage/total',
+      type: 'os/memory/usage/total',
       unit: 'GB'
     })
     this.refreshInterval = parseInt(conf.memory_refresh_rate) || 2
@@ -32,9 +32,9 @@ module.exports = class MemoryMetric {
     const free = os.freemem()
     const used = total - free
 
-    const freePercent = ((free / total) * 100).toFixed(1) // in GB
-    const usedGB = (used / 1000 / 1000 / 1000).toFixed(1)
-    const totalGB = (total / 1000 / 1000 / 1000).toFixed(0)
+    const freePercent = ((free / total) * 100).toFixed(2)
+    const usedGB = (used / 1000 / 1000 / 1000).toFixed(2) // in GB
+    const totalGB = (total / 1000 / 1000 / 1000).toFixed(2) // in GB
     this.totalMemory.set(totalGB)
     this.usedMemory.set(usedGB)
     this.freeMemory.set(freePercent)

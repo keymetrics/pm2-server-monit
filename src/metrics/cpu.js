@@ -8,7 +8,7 @@ module.exports = class CPUMetric {
     this.conf = conf
     this.cpuUsage = io.metric({
       name: 'CPU usage',
-      type: 'cpu/usage',
+      type: 'os/cpu/usage',
       unit: '%'
     })
     this.refreshInterval = parseInt(conf.cpu_refresh_rate) || 2
