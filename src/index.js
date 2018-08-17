@@ -5,6 +5,9 @@ const CPUMetrics = require('./metrics/cpu.js')
 const NetworkMetrics = require('./metrics/network.js')
 const DiskMetrics = require('./metrics/disk.js')
 const MemoryMetrics = require('./metrics/memory.js')
+const FSMetrics = require('./metrics/fs.js')
+const TTYMetrics = require('./metrics/tty.js')
+const ProcessesMetrics = require('./metrics/processes.js')
 
 io.initModule({
   widget: {
@@ -45,4 +48,7 @@ io.initModule({
   const network = new NetworkMetrics(io, conf)  // eslint-disable-line
   const disk = new DiskMetrics(io, conf)  // eslint-disable-line
   const memory = new MemoryMetrics(io, conf) // eslint-disable-line
+  const fd = new FSMetrics(io, conf) // eslint-disable-line
+  const tty = new TTYMetrics(io, conf) // eslint-disable-line
+  const processes = new ProcessesMetrics(io, conf) // eslint-disable-line
 })
