@@ -9,6 +9,8 @@ const FSMetrics = require('./metrics/fs.js')
 const TTYMetrics = require('./metrics/tty.js')
 const ProcessesMetrics = require('./metrics/processes.js')
 
+const MonitoringActions = require('./actions.js')
+
 io.initModule({
   widget: {
     type: 'generic',
@@ -51,4 +53,6 @@ io.initModule({
   const fd = new FSMetrics(io, conf) // eslint-disable-line
   const tty = new TTYMetrics(io, conf) // eslint-disable-line
   const processes = new ProcessesMetrics(io, conf) // eslint-disable-line
+  const actions = new MonitoringActions()
+  actions.expose(io)
 })
