@@ -8,10 +8,10 @@ module.exports = class DiskMetric {
     this.conf = conf
     this.refreshInterval = parseInt(conf.disk_refresh_rate) || 60
     // default disk is /
-    conf.disk_monitored = conf.disk_monitored || '/'
+    conf.drive = conf.drive || '/'
     // allow to monitor multiple disk
-    this.monitoredDisks = conf.disk_monitored.indexOf(',') > -1
-      ? conf.disk_monitored.split(',') : [ conf.disk_monitored ]
+    this.monitoredDisks = conf.drive.indexOf(',') > -1
+      ? conf.drive.split(',') : [ conf.drive ]
 
     // compute the metrics for each disk
     this.metricsStore = this.monitoredDisks.map((diskName, index) => {

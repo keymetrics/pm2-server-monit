@@ -2,6 +2,7 @@
   "name": "pm2-server-monit",
   "version": "3.0.0",
   "description": "Rack to monitor a server",
+  "license": "MIT",
   "engines": {
     "node": ">=4.0.0"
   },
@@ -12,6 +13,7 @@
   "config": {
     "drive": "/",
     "cpu_refresh_rate": "2",
+    "memory_refresh_rate": "2",
     "disk_refresh_rate": "60",
     "network_refresh_rate": "5"
   },
