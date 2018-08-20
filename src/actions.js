@@ -24,38 +24,41 @@ module.exports = class MonitoringActions {
       })
     }
 
-    io.action('processes/users', function (reply) {
-      exec('ps hax -o user | sort | uniq -c', function (err, out) {
-        return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+    if (process.platform !== 'win32') {
+      io.action('processes/users', function (reply) {
+        exec('ps hax -o user | sort | uniq -c', function (err, out) {
+          return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+        })
       })
-    })
 
-    io.action('disk usage', function (reply) {
-      exec('df -h', function (err, out) {
-        return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+      io.action('disk usage', function (reply) {
+        exec('df -h', function (err, out) {
+          return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+        })
       })
-    })
 
-    io.action('who', function (reply) {
-      exec('who', function (err, out) {
-        return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+      io.action('who', function (reply) {
+        exec('who', function (err, out) {
+          return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+        })
       })
-    })
 
-    io.action('uptime', function (reply) {
-      exec('uptime', function (err, out) {
-        return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+      io.action('uptime', function (reply) {
+        exec('uptime', function (err, out) {
+          return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+        })
       })
-    })
 
-    io.action('open ports', function (reply) {
-      exec('lsof -Pni4 | grep ESTABLISHED', function (err, out) {
-        return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+      io.action('open ports', function (reply) {
+        exec('lsof -Pni4 | grep ESTABLISHED', function (err, out) {
+          return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
+        })
       })
-    })
+    }
 
     io.action('ifconfig', function (reply) {
-      exec('ifconfig', function (err, out) {
+      const command = process.platform === 'win32' ? 'ipconfig' : 'ifconfig'
+      exec(command, function (err, out) {
         return err ? reply(err.message) : reply(out.replace(/\n/g, '<br />'))
       })
     })
